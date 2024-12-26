@@ -1,0 +1,21 @@
+{
+  "name": "@if/prettier-config",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.mjs",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "4.2.1",
+    "prettier": "3.2.5"
+  },
+  "devDependencies": {
+    "@if/tsconfig": "*",
+    "typescript": "5.7.2"
+  },
+  "prettier": "@if/prettier-config"
+}

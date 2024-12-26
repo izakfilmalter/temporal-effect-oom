@@ -1,0 +1,35 @@
+{
+  "name": "temporal-effect-oom",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "tooling/*",
+      "packages/*"
+    ]
+  },
+  "engines": {
+    "node": "v20.9.0"
+  },
+  "scripts": {
+    "check": "turbo run lint format typecheck",
+    "clean:workspaces": "turbo clean",
+    "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache'",
+    "format:fix": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache'",
+    "lint": "turbo lint --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg check",
+    "lint:fix": "turbo lint --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg fix",
+    "typecheck": "turbo typecheck"
+  },
+  "dependencies": {
+    "patch-package": "6.5.1",
+    "prettier": "3.2.5",
+    "prettier-config": "*",
+    "turbo": "2.3.3",
+    "typescript": "5.7.2"
+  },
+  "resolutions": {
+    "eslint": "9.4.0",
+    "typescript": "5.7.2"
+  },
+  "prettier": "@if/prettier-config",
+  "packageManager": "yarn@4.3.0"
+}

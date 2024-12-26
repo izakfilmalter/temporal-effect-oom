@@ -1,0 +1,15 @@
+{
+  "extends": "@if/tsconfig/base.json",
+  "version": "4.4.2",
+  "compilerOptions": {
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "rootDir": ".",
+    "outDir": "./lib",
+    "baseUrl": ".",
+    "paths": {
+      "@if/workers/*": ["*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["lib"]
+}
