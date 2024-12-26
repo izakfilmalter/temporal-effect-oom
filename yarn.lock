@@ -1030,6 +1030,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@if/api-client@workspace:packages/api-client":
+  version: 0.0.0-use.local
+  resolution: "@if/api-client@workspace:packages/api-client"
+  dependencies:
+    "@effect/platform": "npm:0.71.2"
+    "@if/eslint-config": "npm:*"
+    "@if/prettier-config": "npm:*"
+    "@if/tsconfig": "npm:*"
+    "@steepleinc/effect-http": "npm:0.83.1"
+    effect: "npm:3.11.8"
+    eslint: "npm:9.4.0"
+    prettier: "npm:3.2.5"
+    typescript: "npm:5.7.2"
+    zod: "npm:3.22.4"
+  languageName: unknown
+  linkType: soft
+
 "@if/api@npm:*, @if/api@workspace:packages/api":
   version: 0.0.0-use.local
   resolution: "@if/api@workspace:packages/api"
@@ -1060,7 +1077,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@if/eslint-config@workspace:tooling/eslint":
+"@if/eslint-config@npm:*, @if/eslint-config@workspace:tooling/eslint":
   version: 0.0.0-use.local
   resolution: "@if/eslint-config@workspace:tooling/eslint"
   dependencies:

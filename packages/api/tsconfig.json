@@ -19,7 +19,6 @@
     "isolatedModules": true,
     "resolveJsonModule": true,
     "noUnusedLocals": true,
-    "strictNullChecks": true,
     "allowJs": true,
     "paths": {
       "~/*": ["src/*"]
