@@ -1065,6 +1065,7 @@ __metadata:
     eslint-plugin-import: "npm:^2.27.5"
     express: "npm:^4.21.0"
     express-file-routing: "npm:^3.0.3"
+    express-rate-limit: "npm:^7.5.0"
     globals: "npm:^15.9.0"
     nodemon: "npm:^3.1.7"
     supertest: "npm:^7.0.0"
@@ -5844,6 +5845,15 @@ __metadata:
   peerDependencies:
     express: ">4.1.2"
   checksum: 10/c66c5457ffec20cd20bcece507335e966731097e074d2b30b6b2b4a097fd682b37b662947e188cdf8131765f47bdac6ba5229c774af9db57e7949397d4337f4d
+  languageName: node
+  linkType: hard
+
+"express-rate-limit@npm:^7.5.0":
+  version: 7.5.0
+  resolution: "express-rate-limit@npm:7.5.0"
+  peerDependencies:
+    express: ^4.11 || 5 || ^5.0.0-beta.1
+  checksum: 10/eff34c83bf586789933a332a339b66649e2cca95c8e977d193aa8bead577d3182ac9f0e9c26f39389287539b8038890ff023f910b54ebb506a26a2ce135b92ca
   languageName: node
   linkType: hard
 
