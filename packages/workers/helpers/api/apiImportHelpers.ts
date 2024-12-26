@@ -5,7 +5,7 @@ import { log } from '@temporalio/workflow'
 import { Array, Either, pipe, Schema, String } from 'effect'
 import qs from 'qs'
 
-import type { APICollection } from '@if/api/src/helpers/apiTypes'
+import type { APICollection } from '@if/api-client'
 import type {
   GetCurrentPageQuery,
   GetTotalPages,

@@ -17,7 +17,7 @@
     "@clerk/backend": "1.18.0",
     "@effect/platform": "0.71.2",
     "@effect/platform-node": "0.42.9",
-    "@if/api": "*",
+    "@if/api-client": "*",
     "@if/tsconfig": "*",
     "@sentry/node": "7.93.0",
     "@sentry/tracing": "7.93.0",

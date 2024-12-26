@@ -2,7 +2,7 @@ import type { ClientError } from '@steepleinc/effect-http'
 import { Array, Effect, pipe } from 'effect'
 import type { UnknownException } from 'effect/Cause'
 
-import type { APICollection } from '@if/api/src/helpers/apiTypes'
+import type { APICollection } from '@if/api-client'
 import { apiReturn } from '@if/workers/helpers/api/handleAPIErrors'
 
 export const apiGetAndSaveCache = async <Q, D extends APICollection, P>(

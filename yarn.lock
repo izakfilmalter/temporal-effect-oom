@@ -1030,7 +1030,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@if/api-client@workspace:packages/api-client":
+"@if/api-client@npm:*, @if/api-client@workspace:packages/api-client":
   version: 0.0.0-use.local
   resolution: "@if/api-client@workspace:packages/api-client"
   dependencies:
@@ -1041,17 +1041,21 @@ __metadata:
     "@steepleinc/effect-http": "npm:0.83.1"
     effect: "npm:3.11.8"
     eslint: "npm:9.4.0"
+    nanoid: "npm:5.0.9"
     prettier: "npm:3.2.5"
     typescript: "npm:5.7.2"
     zod: "npm:3.22.4"
   languageName: unknown
   linkType: soft
 
-"@if/api@npm:*, @if/api@workspace:packages/api":
+"@if/api@workspace:packages/api":
   version: 0.0.0-use.local
   resolution: "@if/api@workspace:packages/api"
   dependencies:
+    "@if/api-client": "npm:*"
     "@if/tsconfig": "npm:*"
+    "@if/workers": "npm:*"
+    "@temporalio/client": "npm:1.11.5"
     "@types/express": "npm:^4.17.21"
     "@types/node": "npm:^22.5.5"
     "@types/supertest": "npm:^6.0.2"
@@ -1120,14 +1124,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@if/workers@workspace:packages/workers":
+"@if/workers@npm:*, @if/workers@workspace:packages/workers":
   version: 0.0.0-use.local
   resolution: "@if/workers@workspace:packages/workers"
   dependencies:
     "@clerk/backend": "npm:1.18.0"
     "@effect/platform": "npm:0.71.2"
     "@effect/platform-node": "npm:0.42.9"
-    "@if/api": "npm:*"
+    "@if/api-client": "npm:*"
     "@if/tsconfig": "npm:*"
     "@sentry/node": "npm:7.93.0"
     "@sentry/tracing": "npm:7.93.0"

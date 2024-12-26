@@ -21,9 +21,11 @@
     "v:login": "vercel login",
     "setup:eslint": "npx eslint --init"
   },
-  "keywords": [],
   "dependencies": {
+    "@if/api-client": "*",
     "@if/tsconfig": "*",
+    "@if/workers": "*",
+    "@temporalio/client": "1.11.5",
     "effect": "3.11.8",
     "express": "^4.21.0",
     "express-file-routing": "^3.0.3",

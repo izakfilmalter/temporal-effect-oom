@@ -4,6 +4,11 @@ import { APICollection } from './apiTypes'
 
 export const Person = Schema.Struct({
   id: Schema.String,
+  type: Schema.Literal('person'),
+  attributes: Schema.Struct({
+    first_name: Schema.String,
+    last_name: Schema.String,
+  }),
 })
 export type Person = Schema.Schema.Type<typeof Person>
 

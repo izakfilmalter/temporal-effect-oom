@@ -1,9 +1,6 @@
 import { Api, ApiGroup } from '@steepleinc/effect-http'
 
-import {
-  GetPeopleQuery,
-  GetPeopleResponse,
-} from '@if/api/src/helpers/apiPeopleTypes'
+import { GetPeopleQuery, GetPeopleResponse } from './apiPeopleTypes'
 
 export const pcoPeopleApi = ApiGroup.make('people').pipe(
   ApiGroup.addEndpoint(

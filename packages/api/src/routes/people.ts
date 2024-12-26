@@ -1,10 +1,7 @@
-import { Array } from 'effect'
+import { Array, Option, pipe } from 'effect'
 import type { Request, Response } from 'express'
 
-import type {
-  GetPeopleQuery,
-  GetPeopleResponse,
-} from '~/helpers/apiPeopleTypes'
+import type { GetPeopleResponse, Person } from '@if/api-client'
 
 const totalPeople = 78903
 
@@ -16,27 +13,61 @@ const totalPeople = 78903
  *   method is not allowed.
  */
 export const get = async (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  req: Request<any, any, any, GetPeopleQuery>,
+  req: Request<
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    any,
+    {
+      per_page?: string
+      offset?: string
+    }
+  >,
   res: Response,
   // eslint-disable-next-line @typescript-eslint/require-await
 ) => {
   if (req.method !== 'GET') return res.status(405)
 
-  const { per_page = 100, offset = 0 } = req.query
+  const perPage = parseInt(
+    pipe(
+      req.query.per_page,
+      Option.fromNullable,
+      Option.getOrElse(() => '100'),
+    ),
+  )
+  const offset = parseInt(
+    pipe(
+      req.query.offset,
+      Option.fromNullable,
+      Option.getOrElse(() => '0'),
+    ),
+  )
 
   const people = Array.makeBy(
-    Math.min(totalPeople - parseInt(offset), parseInt(per_page)),
+    Math.min(totalPeople - offset, perPage),
     (i): Person => ({
-      id: `person_${parseInt(offset) + i + 1}`,
+      id: `person_${offset + i + 1}`,
+      type: 'person',
+      attributes: {
+        first_name: `First Name ${offset + i + 1}`,
+        last_name: `Last Name ${offset + i + 1}`,
+      },
     }),
   )
 
   const response: GetPeopleResponse = {
+    links: {
+      self: `http://localhost:3002/people?per_page=${perPage}&offset=${offset}`,
+      next: `http://localhost:3002/people?per_page=${perPage}&offset=${
+        offset + perPage
+      }`,
+    },
     data: people,
     meta: {
       total_count: totalPeople,
-      count: per_page,
+      count: perPage,
     },
   }
 
