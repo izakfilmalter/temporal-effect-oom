@@ -1,21 +1,11 @@
 import { Schema } from 'effect'
 
 export const APICollection = Schema.Struct({
-  links: Schema.Struct({
-    self: Schema.String,
-    next: Schema.optional(Schema.String),
-  }),
   data: Schema.Array(
     Schema.Struct({
       id: Schema.String,
       type: Schema.String,
       attributes: Schema.Unknown,
-    }),
-  ),
-  included: Schema.Array(
-    Schema.Struct({
-      id: Schema.String,
-      type: Schema.String,
     }),
   ),
   meta: Schema.Struct({
