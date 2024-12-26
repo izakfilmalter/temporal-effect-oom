@@ -29,13 +29,13 @@ export const apiReturn = <T>(params: {
     Exit.match({
       onFailure: (x) => {
         if (x instanceof UnknownException) {
-          console.log('yeet throw UnknownException', x)
+          console.log('throw UnknownException', x)
 
           throw ApplicationFailure.retryable(defaultError, ErrorTypes.Unknown, {
             error: x,
           })
         } else {
-          console.log('yeet throw ClientError', x)
+          console.log('throw ClientError', x)
 
           throw pipe(
             x as Cause.Cause<ClientError.ClientErrorServerSide>,
@@ -107,8 +107,6 @@ export const handleAPIErrors = (params: {
     Option.flatMapNullable((x) => x['retry-after']),
     Option.getOrElse(() => '20'),
   )
-
-  console.log('yeeeet', nextRetryDelay)
 
   switch (error.status) {
     case 401:

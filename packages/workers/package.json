@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "build": "rm -rf ./lib && tsx scripts/build.ts && tsx scripts/build-workflow-bundle.ts",
     "start": "node  --inspect ./lib/workers/worker.js",
-    "dev:workers": "tsx watch --inspect --heapsnapshot-near-heap-limit=3 workers/worker.ts"
+    "dev:workers": "tsx watch --inspect workers/worker.ts"
   },
   "sideEffects": false,
   "dependencies": {
