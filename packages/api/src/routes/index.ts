@@ -1,9 +1,8 @@
+import { Array, pipe } from 'effect'
 import type { Request, Response } from 'express'
 import { nanoid } from 'nanoid'
 
 import { getWorkflowClient } from '@if/api/src/helpers/getWorkflowClient'
-import type { importAPIPeople } from '@if/workers'
-import { TaskQueue } from '@if/workers'
 
 /**
  * Handles GET requests for '/', responding with a JSON message.
@@ -16,11 +15,18 @@ export const get = async (req: Request, res: Response) => {
   if (req.method !== 'GET') return res.status(405)
 
   const client = await getWorkflowClient()
-  await client.start<typeof importAPIPeople>('importAPIPeople', {
-    args: [],
-    taskQueue: TaskQueue.Main,
-    workflowId: nanoid(),
-  })
+
+  await Promise.all(
+    pipe(
+      Array.makeBy(4000, () =>
+        client.start('importAPIPeople', {
+          args: [{}],
+          taskQueue: 'Main',
+          workflowId: nanoid(),
+        }),
+      ),
+    ),
+  )
 
   return res.json({ message: 'Started workflow' })
 }

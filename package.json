@@ -12,6 +12,7 @@
   },
   "scripts": {
     "dev": "turbo run dev",
+    "dev:workers": "yarn workspace @if/workers dev:workers",
     "check": "turbo run lint format typecheck",
     "clean:workspaces": "turbo clean",
     "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache'",

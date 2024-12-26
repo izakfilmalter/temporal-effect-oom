@@ -5,6 +5,6 @@ export const getWorkflowClient = async () => {
 
   return new WorkflowClient({
     connection,
-    namespace: 'pro',
+    namespace: 'prod',
   })
 }

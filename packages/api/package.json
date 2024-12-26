@@ -24,7 +24,6 @@
   "dependencies": {
     "@if/api-client": "*",
     "@if/tsconfig": "*",
-    "@if/workers": "*",
     "@temporalio/client": "1.11.5",
     "effect": "3.11.8",
     "express": "^4.21.0",

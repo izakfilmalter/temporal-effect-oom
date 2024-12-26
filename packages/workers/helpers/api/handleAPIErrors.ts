@@ -2,7 +2,7 @@ import type { Extras } from '@sentry/types'
 import type { ClientError } from '@steepleinc/effect-http'
 import { log } from '@temporalio/activity'
 import { ApplicationFailure } from '@temporalio/workflow'
-import { Cause, Exit, Number, Option, pipe } from 'effect'
+import { Cause, Exit, Option, pipe } from 'effect'
 import { UnknownException } from 'effect/Cause'
 
 import { ErrorTypes } from '@if/workers/helpers/errors'
@@ -99,16 +99,16 @@ export const handleAPIErrors = (params: {
     Option.getOrElse(() => error.message),
   )
 
+  console.log(error.headers)
+
   const nextRetryDelay = pipe(
     error.headers,
     Option.fromNullable,
-    Option.flatMapNullable((x) => x['x-api-api-request-rate-count']),
-    Option.flatMap(Number.parse),
-    Option.getOrElse(() => 100),
-    (x) => x / 100,
-    Math.ceil,
-    (x) => x * 20,
+    Option.flatMapNullable((x) => x['retry-after']),
+    Option.getOrElse(() => '20'),
   )
+
+  console.log('yeeeet', nextRetryDelay)
 
   switch (error.status) {
     case 401:
